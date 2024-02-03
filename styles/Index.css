@@ -1,0 +1,132 @@
+.flex {
+  display: flex;
+}
+.dash {
+  margin-top: 7px;
+  color: goldenrod;
+}
+.console {
+  float: left;
+  clear: both;
+}
+.inventory {
+  float: right;
+  clear: both;
+  margin-top: 70px;
+  padding-left: 100px;
+}
+footer {
+  background-color: rgb(27, 26, 26);
+  margin-top: 10px;
+  clear: both;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  padding: 10px;
+  bottom: 0;
+}
+.main {
+  display: flex;
+}
+.header {
+  display: flex;
+  background-color: rgb(27, 26, 26);
+  flex-direction: row;
+  padding: 10px;
+}
+.header-msg {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+}
+.items {
+  color: goldenrod;
+  font-size: x-large;
+  margin-left: 10px;
+  font-weight: 700;
+}
+.console-area {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 90%;
+  border-radius: 20px;
+  margin-left: 50px auto;
+  position: relative;
+}
+.Welcome-msg {
+  display: flex;
+  background-color: rgb(27, 26, 26);
+  color: goldenrod;
+  height: max-content;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  justify-content: center;
+  padding: 10px;
+}
+.console {
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+  margin-left: 100px;
+  overflow: hidden;
+}
+.input {
+  background-color: rgb(27, 26, 26);
+  border-radius: 0 0 0px 10px;
+  width: 100%;
+  display: flex;
+  left: 10;
+  height: 50px;
+  color: whitesmoke;
+}
+.inp-container {
+  display: flex;
+  width: auto;
+  margin-top: auto;
+}
+.btn {
+  border-radius: 0 0 10px 0;
+}
+button i {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.info-msg {
+  background-color: rgb(27, 26, 26);
+  margin: 10px 10px 10px 10px;
+  padding: 10px;
+  border-radius: 10px;
+  clear: both;
+}
+.scnd-msg {
+  background-color: rgb(27, 26, 26);
+  margin-top: 30px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.msg-area {
+  overflow-y: auto;
+  max-height: 100%;
+}
+.cmd {
+  color: goldenrod;
+  font-weight: 700;
+}
+.order {
+  color: aquamarine;
+  font-weight: 700;
+}
+.user-msg {
+  float: inline-end;
+  background-color: goldenrod;
+  color: rgb(27, 26, 26);
+  font-weight: 700;
+}
+.bg-success,
+.bg-danger {
+  font-weight: 700;
+  color: rgb(27, 26, 26);
+}

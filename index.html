@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miner's Playground</title>
+    <link rel="shortcut icon" href="./Img/logo.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./styles/Index.css" />
+  </head>
+  <body class="bg-dark text-white">
+    <header>
+      <div class="header">
+        <img
+          src="./Img/logo.png"
+          alt="logo-img"
+          height="70px"
+          width="70px"
+          style="margin-left: 20px"
+        />
+        <h1 class="header-msg">Welcome to the Miner's Playground</h1>
+      </div>
+    </header>
+    <main class="main">
+      <div class="container console">
+        <div class="console-area">
+          <h2 class="Welcome-msg" id="name">Welcome Miner</h2>
+          <div class="msg-area" id="msg-area"></div>
+          <div class="inp-container">
+            <input
+              type="text"
+              name="input"
+              id="input"
+              class="input"
+              placeholder="  Enter commands here..."
+            />
+            <button class="btn btn-warning" id="send-btn">
+              <i class="material-icons">send</i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="container inventory">
+        <h2>Inventory</h2>
+        <div class="flex">
+          <img
+            src="./Img/Money.png"
+            alt="dollar-sign"
+            height="40px"
+            width="40px"
+          />
+          <p class="dash">--</p>
+          <p id="money" class="items"></p>
+        </div>
+        <div class="flex">
+          <img src="./Img/stone.png" alt="stone" height="40px" width="40px" />
+          <p class="dash">--</p>
+          <p id="stone" class="items"></p>
+        </div>
+        <div class="flex">
+          <img src="./Img/Bronze.png" alt="bronze" height="40px" width="40px" />
+          <p class="dash">--</p>
+          <p id="bronze" class="items"></p>
+        </div>
+        <div class="flex">
+          <img src="./Img/Iron.png" alt="iron" height="40px" width="40px" />
+          <p class="dash">--</p>
+          <p id="iron" class="items"></p>
+        </div>
+        <div class="flex">
+          <img src="./Img/Iron.png" alt="silver" height="40px" width="40px" />
+          <p class="dash">--</p>
+          <p id="silver" class="items"></p>
+        </div>
+        <div class="flex">
+          <img src="./Img/gold.webp" alt="gold" height="40px" width="40px" />
+          <p class="dash">--</p>
+          <p id="gold" class="items"></p>
+        </div>
+        <div class="flex">
+          <img
+            src="./Img/platinum.png"
+            alt="platinum"
+            height="40px"
+            width="40px"
+          />
+          <p class="dash">--</p>
+          <p id="platinum" class="items"></p>
+        </div>
+        <div class="flex">
+          <img src="./Img/cobalt.png" alt="cobalt" height="40px" width="40px" />
+          <p class="dash">--</p>
+          <p id="cobalt" class="items"></p>
+        </div>
+        <div class="flex">
+          <img
+            src="./Img/titanium.png"
+            alt="titanium"
+            height="40px"
+            width="30px"
+            style="margin-left: 7px"
+          />
+          <p class="dash" style="margin-left: 5px">--</p>
+          <p id="titanium" class="items"></p>
+        </div>
+        <div class="flex">
+          <img
+            src="./Img/emerald.png"
+            alt="emerald"
+            height="25px"
+            width="25px"
+            style="margin-left: 7px; margin-top: 8px"
+          />
+          <p class="dash" style="margin-left: 8px">--</p>
+          <p class="items" id="emerald"></p>
+        </div>
+        <div class="flex">
+          <img
+            src="./Img/diamond.png"
+            alt="diamond"
+            height="45px"
+            width="40px"
+          />
+          <p class="dash">--</p>
+          <p class="items" id="diamond"></p>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div><h3>Miner's Playground 2024 &copy; Sahil Thakar</h3></div>
+    </footer>
+    <script src="./scripts/Index.js"></script>
+  </body>
+</html>
