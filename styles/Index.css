@@ -71,7 +71,6 @@ footer {
   flex-direction: column;
   margin-top: 70px;
   margin-left: 100px;
-  overflow: hidden;
 }
 .input {
   background-color: rgb(27, 26, 26);
@@ -108,8 +107,8 @@ button i {
   border-radius: 10px;
 }
 .msg-area {
-  overflow-y: auto;
-  max-height: 100%;
+  overflow-y: scroll;
+  max-height: 600px;
 }
 .cmd {
   color: goldenrod;
@@ -126,7 +125,8 @@ button i {
   font-weight: 700;
 }
 .bg-success,
-.bg-danger {
+.bg-danger,
+.bg-info {
   font-weight: 700;
   color: rgb(27, 26, 26);
 }

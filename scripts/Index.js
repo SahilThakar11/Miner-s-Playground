@@ -171,13 +171,17 @@ const sellables = {
   emerald: { price: 70 },
   diamond: { price: 100 },
 };
-let minedBlock = 0;
+let minedBlock = 9999;
 let nextBlockLevel = 1000;
 let CurrentLocation = Mines[0];
 let nextMine = Mines[1];
 let userName;
+let miningTimer = 3;
+let counter;
+
 // Handle Command function to handle all the commands for the game like /h, /mine
 function handleCommand(command) {
+  let mineContainer = document.createElement("p");
   const args = command.split("-");
   const action = args[0].trim();
   const secondary = args[1] ? args[1].trim() : null;
@@ -185,47 +189,71 @@ function handleCommand(command) {
     CurrentLocation = Mines[1];
     nextMine = Mines[2];
     nextBlockLevel = 10000;
+
+    miningTimer = 5;
   }
   if (minedBlock > nextBlockLevel) {
     CurrentLocation = Mines[2];
     nextMine = Mines[3];
     nextBlockLevel = 50000;
+
+    miningTimer = 8;
   }
   if (minedBlock > nextBlockLevel) {
     CurrentLocation = Mines[3];
     nextMine = Mines[4];
     nextBlockLevel = 100000;
+
+    miningTimer = 10;
   }
   if (minedBlock > nextBlockLevel) {
     CurrentLocation = Mines[4];
     nextMine = Mines[5];
     nextBlockLevel = 500000;
+
+    miningTimer = 15;
   }
   if (minedBlock > nextBlockLevel) {
     CurrentLocation = Mines[5];
     nextMine = Mines[6];
     nextBlockLevel = 1000000;
+
+    miningTimer = 20;
   }
   if (minedBlock > nextBlockLevel) {
     CurrentLocation = Mines[6];
     nextMine = Mines[7];
     nextBlockLevel = 5000000;
+
+    miningTimer = 25;
   }
   if (minedBlock > nextBlockLevel) {
     CurrentLocation = Mines[7];
     nextMine = Mines[8];
     nextBlockLevel = 10000000;
+
+    miningTimer = 30;
   }
   if (minedBlock > nextBlockLevel) {
     CurrentLocation = Mines[8];
     nextMine = Mines[9];
     nextBlockLevel = 100000000;
+
+    miningTimer = 35;
   }
   if (minedBlock > nextBlockLevel) {
     CurrentLocation = Mines[9];
     nextMine = "No Mines left! :)) Wait till next Update!!";
     nextBlockLevel = "All level reached";
+    mineContainer.classList.add("info-msg");
+    mineContainer.classList.add("bg-info");
+    mineContainer.innerHTML = `Your Current Mine updated to <span class="order">${CurrentLocation}</span>.<br> Next mine <span class="order">${nextMine} is ${
+      nextBlockLevel - minedBlock
+    }</span> blocks away.`;
+    miningTimer = 40;
   }
+  msgArea.appendChild(mineContainer);
+  counter = miningTimer;
   switch (action) {
     case "/mine":
       mine();
@@ -242,7 +270,7 @@ function handleCommand(command) {
     case "/info":
       mineName();
       break;
-    case "/mine-info":
+    case "/mineInfo":
       mineInfo();
       break;
     case "/cls":
@@ -251,6 +279,24 @@ function handleCommand(command) {
     default:
       showError();
   }
+}
+
+function mineInfo() {
+  let container = document.createElement("p");
+  container.classList.add("info-msg");
+  container.innerHTML = `<h4><span class="order">All Mines</span> -- <span class="cmd">Blocks Required</span></h4>
+  <span class="order">"Stone Valley"</span> -- <span class="cmd">0</span> <br>
+  <span class="order">"Bronze Basin"</span> -- <span class="cmd">1000</span> <br>
+  <span class="order">"Iron Ridge Quarry"</span> -- <span class="cmd">10000</span> <br>
+  <span class="order">"Silverstone Grotto"</span>-- <span class="cmd">50000</span> <br>
+  <span class="order">"Goldium Vein Tunnel"</span> -- <span class="cmd">100000</span> <br>
+  <span class="order">"Platinumstone Chasm"</span> -- <span class="cmd">500000</span> <br>
+  <span class="order">"Cobaltite Abyss"</span> -- <span class="cmd">1000000</span> <br>
+  <span class="order">"Titaniumstone Cavern"</span> -- <span class="cmd">5000000</span> <br>
+  <span class="order">"Emeraldium Hollow"</span> -- <span class="cmd">10000000</span> <br>
+  <span class="order">"Diamondium Depths"</span> -- <span class="cmd">100000000</span> <br>
+  `;
+  msgArea.appendChild(container);
 }
 
 function clearConsole() {
@@ -333,7 +379,73 @@ function mine() {
   Inventory.titanium += minedTitanium;
   Inventory.emerald += minedEmerald;
   Inventory.diamond += minedDiamond;
-  UpdateInventory();
+
+  let mineContainer = document.createElement("p");
+  mineContainer.classList.add("info-msg");
+
+  function updateMiningMessage() {
+    mineContainer.innerHTML = `
+      Mining started at <span class="order">${CurrentLocation}</span>.<br>
+      <h1><span class="cmd">${counter} To GO</span></h1>
+    `;
+
+    counter--;
+
+    let items;
+    switch (CurrentLocation) {
+      case Mines[0]:
+        items = `${minedStones}x Stones, ${minedBronze}x Bronze`;
+        break;
+      case Mines[1]:
+        items = `${minedStones}x Stones, ${minedBronze}x Bronze, ${minedIron}x Iron`;
+        break;
+      case Mines[2]:
+        items = `${minedStones}x Stones, ${minedBronze}x Bronze, ${minedIron}x Iron, ${minedSilver}x Silver`;
+        break;
+      case Mines[3]:
+        items = `${minedStones}x Stones, ${minedBronze}x Bronze, ${minedIron}x Iron, ${minedSilver}x Silver, ${minedGold}x Gold`;
+        break;
+      case Mines[4]:
+        items = `${minedStones}x Stones, ${minedBronze}x Bronze, ${minedIron}x Iron, ${minedSilver}x Silver, ${minedGold}x Gold, ${minedPlatinum}x Platinum`;
+        break;
+      case Mines[5]:
+        items = `${minedStones}x Stones, ${minedBronze}x Bronze, ${minedIron}x Iron, ${minedSilver}x Silver, ${minedGold}x Gold, ${minedPlatinum}x Platinum, ${minedCobalt}x Cobalt`;
+        break;
+      case Mines[6]:
+        items = `${minedStones}x Stones, ${minedBronze}x Bronze, ${minedIron}x Iron, ${minedSilver}x Silver, ${minedGold}x Gold, ${minedPlatinum}x Platinum, ${minedCobalt}x Cobalt, ${minedTitanium}x Titanium`;
+        break;
+      case Mines[7]:
+        items = `${minedStones}x Stones, ${minedBronze}x Bronze, ${minedIron}x Iron, ${minedSilver}x Silver, ${minedGold}x Gold, ${minedPlatinum}x Platinum, ${minedCobalt}x Cobalt, ${minedTitanium}x Titanium, ${minedEmerald}x Emerald`;
+        break;
+      case Mines[8]:
+        items = `${minedStones}x Stones, ${minedBronze}x Bronze, ${minedIron}x Iron, ${minedSilver}x Silver, ${minedGold}x Gold, ${minedPlatinum}x Platinum, ${minedCobalt}x Cobalt, ${minedTitanium}x Titanium, ${minedEmerald}x Emerald, ${minedDiamond}x Diamond`;
+        break;
+      case Mines[9]:
+        items = `${minedStones}x Stones, ${minedBronze}x Bronze, ${minedIron}x Iron, ${minedSilver}x Silver, ${minedGold}x Gold, ${minedPlatinum}x Platinum, ${minedCobalt}x Cobalt, ${minedTitanium}x Titanium, ${minedEmerald}x Emerald, ${minedDiamond}x Diamond`;
+        break;
+    }
+
+    if (counter < 0) {
+      clearInterval(miningInterval);
+      mineContainer.classList.add("bg-success");
+      mineContainer.innerHTML = `Mining completed! <br> You got <span class="order">${items}</span><br> Total <span class="cmd">${
+        minedBronze +
+        minedStones +
+        minedIron +
+        minedGold +
+        minedSilver +
+        minedCobalt +
+        minedPlatinum +
+        minedEmerald +
+        minedDiamond +
+        minedTitanium
+      }</span> blocks.`;
+      UpdateInventory();
+      counter = miningTimer;
+    }
+    msgArea.appendChild(mineContainer);
+  }
+  const miningInterval = setInterval(updateMiningMessage, 1000);
 }
 function mineName() {
   let msgContainer = document.createElement("p");
@@ -537,7 +649,7 @@ function registerName(name) {
 }
 
 function helpMsg() {
-  let helpMsg = `<h3>All commands</h3><span class="cmd">/name</span>-<span class="order">[yourName]</span> - For user name<br><span class="cmd">/mine</span> - To mine in resource<br><span class="cmd">/sell</span>-<span class="order">[material]</span> - To sell the resource and earn Money`;
+  let helpMsg = `<h3>All commands</h3><span class="cmd">/name</span>-<span class="order">[yourName]</span> - For user name<br><span class="cmd">/mine</span> - To mine in resource<br><span class="cmd">/sell</span>-<span class="order">[material]</span> - To sell the resource and earn Money<br><span class="cmd">/info</span> - To get info about current level/mine.<br><span class="cmd">/mineInfo</span> - Info about all mines in game.<br><span class="cmd">/cls</span> - To clear console.`;
 
   let helpMSG = document.createElement("p");
   helpMSG.classList.add("info-msg");
@@ -557,6 +669,8 @@ function saveInventory() {
   localStorage.setItem("Inventory", JSON.stringify(Inventory));
   localStorage.setItem("CurrentMine", JSON.stringify(CurrentLocation));
   localStorage.setItem("currentBlockMined", JSON.stringify(minedBlock));
+  localStorage.setItem("counter", JSON.stringify(miningTimer));
+  console.log(miningTimer);
 }
 function saveUserName() {
   localStorage.setItem("userName", JSON.stringify(userName));
@@ -573,6 +687,7 @@ function loadInventory() {
   const savedInventory = localStorage.getItem("Inventory");
   const savedCurrentMine = localStorage.getItem("CurrentMine");
   const savedMinedBlock = localStorage.getItem("currentBlockMined");
+  const saveCounter = localStorage.getItem("counter");
   if (savedInventory) {
     Inventory = JSON.parse(savedInventory);
     UpdateInventory();
@@ -583,7 +698,11 @@ function loadInventory() {
   if (savedMinedBlock) {
     minedBlock = JSON.parse(savedMinedBlock);
   }
+  if (saveCounter) {
+    miningTimer = JSON.parse(saveCounter);
+  }
 }
+
 function UpdateName() {
   document.getElementById(
     "name"
