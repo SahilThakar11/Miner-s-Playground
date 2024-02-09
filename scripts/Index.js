@@ -171,7 +171,7 @@ const sellables = {
   emerald: { price: 70 },
   diamond: { price: 100 },
 };
-let minedBlock = 9999;
+let minedBlock = 0;
 let nextBlockLevel = 1000;
 let CurrentLocation = Mines[0];
 let nextMine = Mines[1];
