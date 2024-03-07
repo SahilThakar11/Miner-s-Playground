@@ -276,6 +276,9 @@ function handleCommand(command) {
     case "/cls":
       clearConsole();
       break;
+    case "/minigame":
+      startMiniGame();
+      break;
     default:
       showError();
   }
@@ -649,7 +652,7 @@ function registerName(name) {
 }
 
 function helpMsg() {
-  let helpMsg = `<h3>All commands</h3><span class="cmd">/name</span>-<span class="order">[yourName]</span> - For user name<br><span class="cmd">/mine</span> - To mine in resource<br><span class="cmd">/sell</span>-<span class="order">[material]</span> - To sell the resource and earn Money<br><span class="cmd">/info</span> - To get info about current level/mine.<br><span class="cmd">/mineInfo</span> - Info about all mines in game.<br><span class="cmd">/cls</span> - To clear console.`;
+  let helpMsg = `<h3>All commands</h3><span class="cmd">/name</span>-<span class="order">[yourName]</span> - For user name<br><span class="cmd">/mine</span> - To mine in resource<br><span class="cmd">/sell</span>-<span class="order">[material]</span> - To sell the resource and earn Money<br><span class="cmd">/info</span> - To get info about current level/mine.<br><span class="cmd">/mineInfo</span> - Info about all mines in game.<br><span class="cmd">/cls</span> - To clear console.<br><span class="cmd">/minigame</span> - To play a minigame.`;
 
   let helpMSG = document.createElement("p");
   helpMSG.classList.add("info-msg");
@@ -707,4 +710,69 @@ function UpdateName() {
   document.getElementById(
     "name"
   ).innerHTML = `<span class="cmd">Welcome</span> &nbsp;<span class="order"> ${userName}</span>`;
+}
+
+function startMiniGame() {
+  const prompts = [
+    { question: "Which is heavier: Gold or Silver?", answer: "Gold" },
+    { question: "Which is lighter: Iron or Platinum?", answer: "Iron" },
+    { question: "What is heavier: Cobalt or Titanium?", answer: "Titanium" },
+    { question: "Which is denser: Diamond or Emerald?", answer: "Diamond" },
+    { question: "What is lighter: Bronze or Silver?", answer: "Silver" },
+    { question: "Which is heavier: Copper or Aluminum?", answer: "Copper" },
+    { question: "What is denser: Water or Ice?", answer: "Water" },
+    { question: "Which is lighter: Helium or Neon gas?", answer: "Helium" },
+    { question: "What is heavier: Mercury or Lead?", answer: "Lead" },
+    {
+      question: "Which is denser: Air or Carbon Dioxide?",
+      answer: "Carbon Dioxide",
+    },
+    {
+      question: "What is lighter: Oak wood or Pine wood?",
+      answer: "Pine wood",
+    },
+    { question: "Which is heavier: Polyester or Cotton?", answer: "Cotton" },
+    { question: "What is denser: Olive oil or Vinegar?", answer: "Olive oil" },
+    { question: "Which is lighter: Mars or Earth?", answer: "Mars" },
+    {
+      question: "What is heavier: Sunflower oil or Soybean oil?",
+      answer: "Sunflower oil",
+    },
+    { question: "Which is denser: Granite or Sandstone?", answer: "Granite" },
+    {
+      question: "What is lighter: Silverback gorilla or Grizzly bear?",
+      answer: "Silverback gorilla",
+    },
+    { question: "Which is heavier: Paper or Plastic?", answer: "Plastic" },
+    { question: "What is denser: Gold or Aluminum?", answer: "Gold" },
+    {
+      question: "Which is lighter: Hydrogen or Nitrogen gas?",
+      answer: "Hydrogen",
+    },
+  ];
+
+  const randomIndex = Math.floor(Math.random() * prompts.length);
+  const currentPrompt = prompts[randomIndex];
+
+  let userAnswer = prompt(currentPrompt.question);
+
+  if (
+    userAnswer &&
+    userAnswer.toLowerCase() === currentPrompt.answer.toLowerCase()
+  ) {
+    alert("Correct! You've earned $50.");
+    Inventory.Money += 50;
+    UpdateInventory();
+  } else {
+    alert(
+      `Incorrect. The correct answer is ${currentPrompt.answer}. Better luck next time!`
+    );
+  }
+  let taskMsg = `Mini Game Completed!`;
+
+  let taskMSG = document.createElement("p");
+  taskMSG.classList.add("info-msg");
+  taskMSG.classList.add("bg-success");
+  taskMSG.innerHTML = taskMsg;
+  msgArea.appendChild(taskMSG);
 }
